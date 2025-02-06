@@ -42,32 +42,32 @@ const Home = () => {
 
       <main className="relative">
        
-        <section className="relative z-10">
+        <section id="home" className="relative z-10">
           <Hero />
         </section>
 
        
-        <section className="relative z-20">
+        <section id="about" className="relative z-20">
           <AboutUs data={filterData("About Us")} />
         </section>
 
       
-        <section className="relative z-20">
+        <section id="services" className="relative z-20">
           <Services data={filterData("Services")} />
         </section>
 
         
-        <section className="relative z-20">
+        <section id="whychoose" className="relative z-20">
           <WhyChooseUs data={filterData("Why Choose Us?")} />
         </section>
 
         
-        <section className="relative z-20">
+        <section id="howtowork" className="relative z-20">
           <HowItWork data={filterData("How It Works")} />
         </section>
 
        
-        <section className="relative z-20">
+        <section id="contact" className="relative z-20">
           <ContactUs data={filterData("Contact Us")} />
         </section>
       </main>

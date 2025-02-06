@@ -23,15 +23,15 @@ const Nav = () => {
             </div>
           </div>
 
-          {/* Desktop Menu */}
+          
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            <a href="#about" className="text-gray-800 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
               About Us
             </a>
-            <a href="#" className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            <a href="#services" className="text-gray-800 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
               Services
             </a>
-            <a href="#" className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            <a href="#contact" className="text-gray-800 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
               Contact Us
             </a>
             <div className="border-l pl-4 border-gray-200">

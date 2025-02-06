@@ -2,15 +2,16 @@ import React from "react";
 
 const AboutUs = ({ data }) => {
   return (
-    <section className="bg-gradient-to-b from-white to-indigo-50 py-24 px-6 md:px-12 relative overflow-hidden">
-     
+    <section className="bg-gradient-to-b from-white to-indigo-50 py-24 px-6 md:px-12 relative">
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-1/2 h-1/2" 
-             style={{ 
-               backgroundImage: "radial-gradient(circle at 2px 2px, indigo 1px, transparent 0)",
-               backgroundSize: "30px 30px"
-             }}>
-        </div>
+        <div
+          className="absolute top-0 right-0 w-1/2 h-1/2"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 2px 2px, indigo 1px, transparent 0)",
+            backgroundSize: "30px 30px",
+          }}
+        ></div>
       </div>
 
       <div className="max-w-4xl mx-auto">
@@ -21,19 +22,21 @@ const AboutUs = ({ data }) => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-8">
             About Us
           </h2>
-          
+
           {data && data.length > 0 ? (
             <div className="space-y-8">
               <p className="text-xl leading-relaxed text-gray-600">
                 {data[0].Content}
               </p>
               <div className="flex items-center justify-center space-x-4">
-                <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-300">
-                  Learn More
-                </button>
-                <button className="border-2 border-indigo-600 text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors duration-300">
-                  Contact Us
-                </button>
+              <button className="cursor-pointer bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-300 focus:outline-none">
+  Learn More
+</button>
+
+<button className="border-2 border-indigo-600 text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 cursor-pointer transition-colors duration-300 focus:outline-none">
+  Contact Us
+</button>
+
               </div>
             </div>
           ) : (

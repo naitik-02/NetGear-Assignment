@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Send, Mail, User, MessageSquare } from "lucide-react";
+import { Send, Mail, User, MessageSquare, CheckCircle } from "lucide-react";
 import axios from "axios";
 
 const ContactUs = () => {
@@ -10,6 +10,7 @@ const ContactUs = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,48 +18,57 @@ const ContactUs = () => {
       ...prevData,
       [name]: value,
     }));
-    
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data on Submit:", formData); 
-    await postFormData(); 
+    await postFormData();
   };
 
   const postFormData = async () => {
     try {
-      setIsSubmitting(true); 
-      console.log("Sending the following data to API:", formData);  
+      setIsSubmitting(true);
 
       const response = await fetch(
         "https://api.sheetbest.com/sheets/23f43a77-f7c5-4f3f-8ac5-371a41e0f2a9",
         {
           method: "POST",
-          headers:{
-            "Content-type": "application/json"
+          headers: {
+            "Content-type": "application/json",
           },
           body: JSON.stringify(formData),
         }
       );
-     setFormData({
+
+      setFormData({
         Name: "",
         Email: "",
         Message: "",
-     })
+      });
+
+      
+      setSuccessMessage("Message sent successfully!");
+
+      
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 3000);
     } catch (error) {
       console.error("Error submitting form data:", error);
     } finally {
-      setIsSubmitting(false); 
+      setIsSubmitting(false);
     }
   };
 
   return (
     <section className="bg-gradient-to-b from-indigo-50 to-white py-24 px-6 md:px-12 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-0 w-64 h-64 bg-indigo-400 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-20 right-0 w-64 h-64 bg-purple-400 rounded-full filter blur-3xl"></div>
-      </div>
+     
+      {successMessage && (
+        <div className="fixed bottom-5 z-40 right-5 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-2 animate-fade-in">
+          <CheckCircle className="w-5 h-5" />
+          <span>{successMessage}</span>
+        </div>
+      )}
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <div className="max-w-3xl mx-auto mb-16">
@@ -84,7 +94,7 @@ const ContactUs = () => {
             </label>
             <input
               type="text"
-              name="Name" 
+              name="Name"
               value={formData.Name}
               onChange={handleChange}
               required
@@ -100,7 +110,7 @@ const ContactUs = () => {
             </label>
             <input
               type="email"
-              name="Email" 
+              name="Email"
               value={formData.Email}
               onChange={handleChange}
               required
@@ -115,7 +125,7 @@ const ContactUs = () => {
               Message
             </label>
             <textarea
-              name="Message" 
+              name="Message"
               value={formData.Message}
               onChange={handleChange}
               required
